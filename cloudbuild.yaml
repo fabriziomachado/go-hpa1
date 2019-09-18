@@ -1,0 +1,42 @@
+steps:
+
+  - id: 'Instalando dependencias'
+    name: 'gcr.io/cloud-builders/go'
+    args: ['install', 'app']
+
+  - id: 'Rodando os Testes Unitários'
+    name: 'gcr.io/cloud-builders/go'
+    args: ['test', '-v','app']
+
+  - id: 'Build da Imagem'
+    name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '--tag=gcr.io/$PROJECT_ID/go-hpa:$COMMIT_SHA', '.']
+
+images: ['gcr.io/$PROJECT_ID/go-hpa:$COMMIT_SHA']
+
+#   - id: build-test-image
+#     name: gcr.io/cloud-builders/docker
+#     entrypoint: bash
+#     args:
+#       - -c
+#       - |
+#         docker image build --target build --tag greeting:test .
+#
+#   - id: run-tests
+#     name: gcr.io/cloud-builders/docker
+#     entrypoint: bash
+#     args:
+#       - -c
+#       - |
+#         docker container run greeting:test go test
+#
+#   - id: build-app
+#     name: gcr.io/cloud-builders/docker
+#     entrypoint: bash
+#     args:
+#       - -c
+#       - |
+#         docker image build --tag gcr.io/${PROJECT_ID}/greeting:${COMMIT_SHA} .
+#
+# images:
+#   - gcr.io/${PROJECT_ID}/greeting:${COMMIT_SHA}
