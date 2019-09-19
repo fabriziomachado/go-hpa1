@@ -10,7 +10,7 @@ steps:
 
   - id: 'Build da Imagem'
     name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-f ./Dockerfile.prod --tag=gcr.io/$PROJECT_ID/go-hpa:$COMMIT_SHA', '.']
+    args: ['build', '--tag=gcr.io/$PROJECT_ID/go-hpa:$COMMIT_SHA', '.', '-f Dockerfile.prod']
 
 images:
   - gcr.io/${PROJECT_ID}/go-hpa:latest
