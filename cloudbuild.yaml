@@ -20,10 +20,9 @@ steps:
     name: 'gcr.io/cloud-builders/gcloud'
     args: ['beta', 'run', 'deploy', 'go-hpa', '--image', 'gcr.io/$PROJECT_ID/go-hpa', '--region', 'us-central1','--platform', 'managed', '--quiet']
 
-- id: 'Add iam Policy'
-  name: 'gcr.io/cloud-builders/gcloud'
-  args: ['aim', 'service-accounts', 'add-iam-policy-binding', 'go-hpa', '--member','allUsers', '--role', 'roles/run.invoker']
-
+  - id: 'Add iam Policy'
+    name: 'gcr.io/cloud-builders/gcloud'
+    args: ['aim', 'service-accounts', 'add-iam-policy-binding', 'go-hpa', '--member', 'allUsers', '--role', 'roles/run.invoker']
 
   # - id: 'Add iam Policy'
   #   name: 'gcr.io/cloud-builders/gcloud'
