@@ -18,7 +18,7 @@ steps:
 
   - id: 'Deploy container image to Cloud Run'
     name: 'gcr.io/cloud-builders/gcloud'
-    args: ['beta', 'run', 'deploy', 'go-hpa', '--image', 'gcr.io/$PROJECT_ID/go-hpa', '--region', 'us-central1','--platform', 'cloudrun', '--quiet']
+    args: ['beta', 'run', 'deploy', 'go-hpa', '--image', 'gcr.io/$PROJECT_ID/go-hpa', '--region', 'us-central1','--platform', 'managed', '--quiet']
 
 images:
   - gcr.io/${PROJECT_ID}/go-hpa:${COMMIT_SHA}
