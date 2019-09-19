@@ -10,7 +10,7 @@ steps:
 
   - id: 'Build the container imagem'
     name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-f', 'Dockerfile.prod', '--tag', 'gcr.io/$PROJECT_ID/go-hpa:$COMMIT_SHA', '.', '--no-cache']
+    args: ['build', '-f', 'Dockerfile.prod', '--tag', 'gcr.io/$PROJECT_ID/go-hpa', '.', '--no-cache']
 
   - id: 'Push the container image to Container Registry'
     name: 'gcr.io/cloud-builders/docker'
