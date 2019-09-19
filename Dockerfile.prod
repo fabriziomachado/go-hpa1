@@ -1,9 +1,9 @@
 FROM golang:1.11-alpine AS build
+
 RUN apk add --update --no-cache gcc git build-base
 
-
 WORKDIR /go/src/app
-ADD ./src /go/src/app
+ADD ./src/app /go/src/app
 
 RUN CGO_ENABLED=0 go build -o /bin/demo
 
