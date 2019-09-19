@@ -12,7 +12,8 @@ steps:
     name: 'gcr.io/cloud-builders/docker'
     args: ['build', '-f Dockerfile.prod --tag=gcr.io/$PROJECT_ID/go-hpa:$COMMIT_SHA', '.']
 
-images: ['gcr.io/$PROJECT_ID/go-hpa:$COMMIT_SHA']
+images:
+  - gcr.io/$PROJECT_ID/go-hpa:{$COMMIT_SHA}
 
 #   - id: build-test-image
 #     name: gcr.io/cloud-builders/docker
